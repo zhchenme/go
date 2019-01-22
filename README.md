@@ -7,4 +7,9 @@
 [MySQL 事务](mysql/事务.md)
 
 
+### jdk
+
+[jdk 常用数据结构扩容机制总结](jdk/扩容总结.md)
+
+
 
