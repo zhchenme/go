@@ -112,7 +112,7 @@ epoll 的优点：
 
 ### 参考
 
-(Java NIO：浅析I/O模型)[http://www.cnblogs.com/dolphin0520/p/3916526.html] by 海子 <br>
-(深入浅出异步I/O模型)[https://alicsd.iteye.com/blog/868702] by 老徐 <br>
-(聊聊Linux 五种IO模型)[https://www.jianshu.com/p/486b0965c296] by 猿码道 <br>
-(聊聊IO多路复用之select、poll、epoll详解)[https://www.jianshu.com/p/dfd940e7fca2] by 猿码道 <br>
+[Java NIO：浅析I/O模型](http://www.cnblogs.com/dolphin0520/p/3916526.html) by 海子 <br>
+[深入浅出异步I/O模型](https://alicsd.iteye.com/blog/868702) by 老徐 <br>
+[聊聊Linux 五种IO模型](https://www.jianshu.com/p/486b0965c296) by 猿码道 <br>
+[聊聊IO多路复用之select、poll、epoll详解](https://www.jianshu.com/p/dfd940e7fca2) by 猿码道 <br>
