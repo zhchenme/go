@@ -12,7 +12,7 @@
 [jdk 常用数据结构扩容机制总结](基础/jdk%20数据结构扩容总结.md) <br>
 [IO basic](基础/IO%20模型.md) <br>
 [jdk SPI](基础/jdk%20SPI.md) <br>
-
+[Java 为什么不支持创建泛型化数组](基础/泛型数组.md) <br>
 ### 并发
 
 [synchronized](并发/synchronized.md) <br>
