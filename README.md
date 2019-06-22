@@ -54,6 +54,7 @@ PS：梳理总结大多来源于网络文章与相关技术书籍！
 
 <hr>
 
+* [MySQL 常用数据类型](mysql/MySQL%20常用数据类型.md)
 * [MySQL 事务](mysql/事务.md) 
 * [MySQL EXPLAIN 关键字 SQL 分析](mysql/EXPLAIN%20关键字.md) 
 * [MySQL 索引原理](mysql/索引原理分析.md) 
