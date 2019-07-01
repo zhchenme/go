@@ -59,7 +59,16 @@ PS：梳理总结大多来源于网络文章与相关技术书籍！
 * [MySQL EXPLAIN 关键字 SQL 分析](mysql/EXPLAIN%20关键字.md) 
 * [MySQL 索引原理](mysql/索引原理分析.md) 
 
+### Redis
+
+<hr>
+
+* [Redis 数据持久化之 RDB](redis/Redis%20RDB%20持久化.md)
+* [Redis 数据类型之哈希表](redis/Redis%20数据结构之哈希表.md)
+
 ### JVM
+
+<hr>
 
 * [Java 运行时数据区域](JVM/java%20运行时内存区域划分.md)
 * [GC Root 可达性分析算法](JVM/GC%20Root%20算法.md)
