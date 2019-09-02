@@ -31,8 +31,133 @@ SPI 的接口是 Java 核心库的一部分，是由启动类加载器 (Bootstra
 
 关于 jdk SPI 的 demo，可以参考：[Java-SPI机制](https://www.jianshu.com/p/e4262536000d) by 贾博岩 
 
+### 二、SPI 案例分析
+
+最早学习 Java 时连接数据库，都会先利用反射机制 `Class.forName("com.mysql.jdbc.Driver");` 加载数据库驱动。
+
+这里其实可以引申出一个面试题，`Class.forName()` 与 `ClassLoader.loadClass` 区别，`Class.forName("com.mysql.jdbc.Driver");` 之所以能够加载数据库驱动，除了将类加载到虚拟机还会初始化该类，从而执行该类的静态方法，而加载数据库驱动，就是在那个静态方法里完成的，`ClassLoader.loadClass` 只会将类加载到虚拟机而不会执行类的初始化。
+
+随着版本的更新（具体版本不清楚），现在连接数据库，不执行 `Class.forName("com.mysql.jdbc.Driver");` 也会加载数据库驱动，原因就是利用了 SPI 服务发现机制，下面我们一起来看一下。
+
+`DriverManager` 类里也有一个静态代码块，如下
+
+```java
+    static {
+        loadInitialDrivers();
+        println("JDBC DriverManager initialized");
+    }
+```
+
+下面接着来看 `loadInitialDrivers` 方法
+
+```java
+private static void loadInitialDrivers() {
+        String drivers;
+        try {
+        	// 通过系统系统变量获取数据库驱动，系统变量中并没有这个值
+            drivers = AccessController.doPrivileged(new PrivilegedAction<String>() {
+                public String run() {
+                	// 有兴趣的可以打印 System.getProperty 值看看
+                    return System.getProperty("jdbc.drivers");
+                }
+            });
+        } catch (Exception ex) {
+            drivers = null;
+        }
+
+        AccessController.doPrivileged(new PrivilegedAction<Void>() {
+        	// SPI 加载数据库驱动
+            public Void run() {
+            	// 加载服务资源
+                ServiceLoader<Driver> loadedDrivers = ServiceLoader.load(Driver.class);
+                Iterator<Driver> driversIterator = loadedDrivers.iterator();
+                try{
+                    while(driversIterator.hasNext()) {
+                        driversIterator.next();
+                    }
+                } catch(Throwable t) {
+                // Do nothing
+                }
+                return null;
+            }
+        });
+
+        println("DriverManager.initialize: jdbc.drivers = " + drivers);
+
+        // 系统变量中有数据库驱动值，则直接使用 Class.forName 加载
+        if (drivers == null || drivers.equals("")) {
+            return;
+        }
+        // 数据库驱动可配置多个
+        String[] driversList = drivers.split(":");
+        println("number of Drivers:" + driversList.length);
+        for (String aDriver : driversList) {
+            try {
+                println("DriverManager.Initialize: loading " + aDriver);
+                Class.forName(aDriver, true,
+                        ClassLoader.getSystemClassLoader());
+            } catch (Exception ex) {
+                println("DriverManager.Initialize: load failed: " + ex);
+            }
+        }
+    }
+```
+
+我们要关注的是 `driversIterator.next()` 迭代器方法，如下
+
+```java
+        public S next() {
+            if (acc == null) {
+                return nextService();
+            } else {
+                PrivilegedAction<S> action = new PrivilegedAction<S>() {
+                    public S run() { return nextService(); }
+                };
+                return AccessController.doPrivileged(action, acc);
+            }
+        }
+```
+
+`next` 方法中调用了 `nextService()`
+
+```java
+        private S nextService() {
+            if (!hasNextService())
+                throw new NoSuchElementException();
+            String cn = nextName;
+            nextName = null;
+            Class<?> c = null;
+            try {
+            	// 加载数据库驱动
+                c = Class.forName(cn, false, loader);
+            } catch (ClassNotFoundException x) {
+                fail(service,
+                     "Provider " + cn + " not found");
+            }
+            if (!service.isAssignableFrom(c)) {
+                fail(service,
+                     "Provider " + cn  + " not a subtype");
+            }
+            try {
+                S p = service.cast(c.newInstance());
+                providers.put(cn, p);
+                return p;
+            } catch (Throwable x) {
+                fail(service,
+                     "Provider " + cn + " could not be instantiated",
+                     x);
+            }
+            throw new Error();          // This cannot happen
+        }
+```
+
+看了上面的代码就很清晰了，通过 SPI 机制，加载 `META-INF/services/` 路径下的配置，通过迭代器逐个注册数据库驱动。
+
 ### 参考
 
 [Java-SPI机制](https://www.jianshu.com/p/e4262536000d) by 贾博岩 <br>
 [高级开发必须理解的Java中SPI机制](https://www.jianshu.com/p/46b42f7f593c) by caison <br>
 [java中的SPI机制](https://blog.csdn.net/sigangjun/article/details/79071850) by sigangjun <br>
+
+
+
