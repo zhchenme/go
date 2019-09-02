@@ -153,11 +153,37 @@ private static void loadInitialDrivers() {
 
 看了上面的代码就很清晰了，通过 SPI 机制，加载 `META-INF/services/` 路径下的配置，通过迭代器逐个注册数据库驱动。
 
+### 三、线程上下文类加载器
+
+在上面的例子中，SPI 会调用 `ServiceLoader.load(Driver.class)` 加载驱动类，详细代码如下
+
+```java
+    public static <S> ServiceLoader<S> load(Class<S> service) {
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        return ServiceLoader.load(service, cl);
+    }
+```
+
+加载 `ServiceLoader` 的 `BootstrapClassLoader` 是不能加载 SPI 的实现类的，因为 SPI 的实现类是由 `AppClassLoader` 加载的，而 `BootstrapClassLoader` 是不能委派 `AppClassLoader` 来加载类的，于是就使用线程上下文类加载器来解决这个问题。
+
+线程上下文类加载器本质属于应用程序类加载器(Application ClassLoader)，下面可以用一个例子来验证
+
+```java
+    public static void main(String[] args) {
+        System.out.println(Thread.currentThread().getContextClassLoader()); 
+        System.out.println(Test.class.getClassLoader()); 
+        System.out.println(ClassLoader.getSystemClassLoader()); 
+    }
+```
+
+执行上面的代码你会发现输出的值是一样的，那为什么还要有线程上下文类加载器呢？个人觉得，当双亲委派模型遭到破坏时，就需要使用使用线程上下文类加载器去打破这种限制。
+
 ### 参考
 
 [Java-SPI机制](https://www.jianshu.com/p/e4262536000d) by 贾博岩 <br>
 [高级开发必须理解的Java中SPI机制](https://www.jianshu.com/p/46b42f7f593c) by caison <br>
 [java中的SPI机制](https://blog.csdn.net/sigangjun/article/details/79071850) by sigangjun <br>
+[理解TCCL：线程上下文类加载器](https://www.itcodemonkey.com/article/5859.html) by 蹲厕所的熊 <br>
 
 
 
