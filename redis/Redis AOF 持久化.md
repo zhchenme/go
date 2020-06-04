@@ -7,7 +7,7 @@
 - appendfsync：AOF 同步策略
 - no-appendfsync-on-rewrite：AOF 重写期间是否延迟文件同步，默认 no
 - auto-aof-rewrite-percentage：当目前 aof 文件大小超过上一次重写时的 aof 文件大小的百分之多少时会再次进行重写，默认 100
-- auto-aof-rewrite-min-size：AOF 触发重写最小文件大小
+- auto-aof-rewrite-min-size：AOF 触发重写最小文件大小，默认 64mb
 
 AOF（append only file)通过保存 Redis 执行的写命令来保存数据库状态，从而完成数据同步。默认情况下 AOF 持久化是关闭的。
 
