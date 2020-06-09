@@ -40,6 +40,7 @@ PS：梳理总结大多来源于网络文章与相关技术书籍！
     - [Redis 数据持久化之 AOF](redis/Redis%20AOF%20持久化.md)
     - [Redis 数据类型之哈希表](redis/Redis%20数据结构之哈希表.md)
     - [Redis 键过期删除策略](redis/Redis键过期删除策略.md)
+    - [Redis 主从复制](redis/主从复制.md)
  - JVM
     - [Java 运行时数据区域](JVM/java%20运行时内存区域划分.md)
     - [GC Root 可达性分析算法](JVM/GC%20Root%20算法.md)
