@@ -75,9 +75,9 @@ public class GenericSamples<T> {
 
 下面是 get 与 set 方法反编译的结果：
 
-set 与 get 方法通过反编译后并不会保留类型信息，统一处理成了 `Object`，这个才是我们通常所说的泛型擦除，由于被编译器当作 `Object` 类型处理，那么我们就可以通过反射 set 任意类型的参数。
-
 ![](https://raw.githubusercontent.com/zchen96/java-memo/master/image/基础/generics2.png)
+
+set 与 get 方法通过反编译后并不会保留类型信息，统一处理成了 `Object`，这个才是我们通常所说的泛型擦除，由于被编译器当作 `Object` 类型处理，那么我们就可以通过反射 set 任意类型的参数。
 
 和 `LocalVariableTypeTable` 类似的还有一个 `LocalVariableTable`，不同的地方在于前者的 `Signature` 相较于后者的 `descriptor` 保存了泛型信息，关于这两个属性更多的介绍可以查看官方的介绍：[4.7.13. The LocalVariableTable Attribute](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html)。
 
