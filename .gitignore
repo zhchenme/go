@@ -15,5 +15,3 @@ target/
 *.tar
 *.tar.gz
 *.zip
-/life/
-/redis/一些问题.md
