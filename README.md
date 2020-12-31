@@ -38,9 +38,9 @@
     - [MySQL EXPLAIN 关键字 SQL 分析](mysql/EXPLAIN%20关键字.md)
     - [MySQL 索引原理](mysql/索引原理分析.md)
  - Redis
-    - [Redis 数据持久化之 RDB](redis/Redis%20RDB%20持久化.md)
-    - [Redis 数据持久化之 AOF](redis/Redis%20AOF%20持久化.md)
-    - [Redis 数据类型之哈希表](redis/Redis%20数据结构之哈希表.md)
+    - [Redis 数据类型之哈希表](redis/19-07-01-Redis数据结构之哈希表.md)
+    - [Redis 数据持久化之 RDB](redis/19-07-01-RedisRDB持久化.md)
+    - [Redis 数据持久化之 AOF](redis/20-05-29-RedisAOF持久化.md)
     - [Redis 键过期删除策略](redis/Redis键过期删除策略.md)
     - [Redis 主从复制](redis/主从复制.md)
     - [Redis Sentinel](redis/Redis%20Sentinel.md)

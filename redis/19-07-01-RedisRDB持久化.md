@@ -5,7 +5,7 @@
 
 ### 一、RDB 介绍
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181208215419587.png)
+![](https://raw.githubusercontent.com/zhchenme/go/master/image/%E5%9F%BA%E7%A1%80/redis-rdb-1.png)
 
 RDB（Redis DataBase）持久化既可以手动执行，也可以通过触发服务器配置信息自动执行，用来将某个时间点上的数据保存到磁盘上的一个 RDB（`dump.rdb`） 文件中。
 
@@ -46,7 +46,7 @@ struct saveparam {
 
 最终会使用一个 `saveparam` 数组来保存相关的配置信息，下面是一个具体的图
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20181208215328117.png)
+![](https://raw.githubusercontent.com/zhchenme/go/master/image/%E5%9F%BA%E7%A1%80/redis-rdb-2.png)
 
 `redisServer` 对象除了维护着一个 `saveparam` 数组外，还维护着一个 `dirty` 计数器与 `lastsave` 属性。
 
