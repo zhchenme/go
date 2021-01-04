@@ -65,7 +65,7 @@ Redis 如果写很频繁会导致 AOF 文件的体积越来越大，使用 AOF �
 
 ### 2.2 重写原理
 
-![](https://raw.githubusercontent.com/zhchenme/go/master/image/%E5%9F%BA%E7%A1%80/aof-rewrite.png.png)
+![](https://raw.githubusercontent.com/zhchenme/go/master/image/%E5%9F%BA%E7%A1%80/aof-rewrite.png)
 
 AOF 后台重写期间，服务器进程还会继续处理命令请求，如果新的命令对数据库状态进行修改，可能会导致新 AOF 文件与数据库状态不一致。
 
