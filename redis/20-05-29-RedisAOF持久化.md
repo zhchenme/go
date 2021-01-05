@@ -6,7 +6,7 @@ AOF（append only file)通过保存 Redis 执行的写命令来保存数据库�
 
 #### 1.1 AOF 相关配置
 
-在介绍 AOF 持久化之前，先来了解一下 reis.conf 配置文件中关于 aof 配置的一些属性：
+在介绍 AOF 持久化之前，先来了解一下 redis.conf 配置文件中关于 AOF 配置的一些属性：
 
 - appendonly：是否打开 AOF 持久化，默认 no
 - appendfilename：AOF 文件名，默认 `appendonly.aof`
