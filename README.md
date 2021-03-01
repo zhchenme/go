@@ -1,5 +1,5 @@
  - java 基础
-    - [2018-07-29-AJAX 跨域完全解读](基础/AJAX%20跨域完全解读.md)
+    - [2018-07-29-AJAX 跨域完全解读](基础/2018-07-29-AJAX%20跨域完全解读.md)
     - [2018-08-23-String 对象内存分配策略.md](基础/2018-08-23-String对象内存分配策略.md)
     - [2018-09-30-static 关键字静态导包](基础/2018-09-30-static%20静态导包.md)
     - [2019-01-22-jdk 常用数据结构扩容机制总结](基础/2019-01-22-jdk%20数据结构扩容总结.md)
@@ -39,13 +39,13 @@
     - [MySQL EXPLAIN 关键字 SQL 分析](mysql/EXPLAIN%20关键字.md)
     - [MySQL 索引原理](mysql/索引原理分析.md)
  - Redis
-    - [Redis 数据类型之哈希表](redis/19-07-01-Redis数据结构之哈希表.md)
-    - [Redis 数据持久化之 RDB](redis/19-07-01-RedisRDB持久化.md)
-    - [Redis 数据持久化之 AOF](redis/20-05-29-RedisAOF持久化.md)
-    - [Redis 键过期删除策略](redis/Redis键过期删除策略.md)
-    - [Redis 主从复制](redis/主从复制.md)
-    - [Redis Sentinel](redis/Redis%20Sentinel.md)
-    - [Redis 集群](redis/Redis%20集群.md)
+    - [2019-07-01-Redis 数据类型之哈希表](redis/2019-07-01-Redis数据结构之哈希表.md)
+    - [2019-07-01-Redis 数据持久化之 RDB](redis/2019-07-01-RedisRDB持久化.md)
+    - [2020-05-29-Redis 数据持久化之 AOF](redis/2020-05-29-RedisAOF持久化.md)
+    - [2020-05-03-Redis 键过期删除策略](redis/2020-05-03-Redis键过期删除策略.md)
+    - [2020-06-05-Redis 主从复制](redis/2020-06-05-主从复制.md)
+    - [2020-06-17-Redis Sentinel](redis/2020-06-17-Redis%20Sentinel.md)
+    - [2020-07-06-Redis 集群](redis/2020-07-06-Redis%20集群.md)
  - JVM
     - [2017-11-26-java运行时内存区域划分](JVM/2017-11-26.java%20运行时内存区域划分.md)
     - [2017-12-05-GC Root 可达性分析算法](JVM/2017-12-05.GC%20Root%20算法.md)
