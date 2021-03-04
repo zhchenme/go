@@ -25,7 +25,7 @@ Redis Sentinel 本质是一个运行在特殊模式下的 Redis 服务器，一�
 
 #### 2.1 主观下线
 
-默认情况下，Sentinel 会以每秒一次的频率向所有创建了命令连接的实例（主服务器、从服务器、其他 Sentinel 实例）发送 `PING` 命令，病通过实例返回的 `PING` 命令的回复判断实例是否下线。
+默认情况下，Sentinel 会以每秒一次的频率向所有创建了命令连接的实例（主服务器、从服务器、其他 Sentinel 实例）发送 `PING` 命令，并通过实例返回的 `PING` 命令的回复判断实例是否下线。
 
 Sentinel 的配置文件中 `down-after-milliseconds` 属性指定了判断服务器主观下线的时间长度，默认是 30s，在 30s 内如果服务器没有响应 Sentinel 发送的 `PING` 命令，Sentinel 会把该服务器标记为主观下线状态。
 
@@ -33,7 +33,7 @@ Sentinel 的配置文件中 `down-after-milliseconds` 属性指定了判断服�
 
 #### 2.2 客观下线
 
-Sentinel 将一个主服务器标记为主观下线之后，为了确认这个主服务器是否真的下线，会向监视该主服务器的其他 Sentinel 进行询问，当该 Sentinel 从其他 Sentinel 接收到足够数量的以下线判断后，Sentinel 就会将主服务器判定为客观下线，并对主服务器进行故障迁移操作。这个数量就是上面的 `quorum` 参数值。
+Sentinel 将一个主服务器标记为主观下线之后，为了确认这个主服务器是否真的下线，会向监视该主服务器的其他 Sentinel 进行询问，当该 Sentinel 从其他 Sentinel 接收到足够数量的已下线判断后，Sentinel 就会将主服务器判定为客观下线，并对主服务器进行故障迁移操作。这个数量就是上面的 `quorum` 参数值。
 
 在一般情况下， 每个 Sentinel 会以每 10 秒一次的频率向它已知的所有主服务器和从服务器发送 `INFO [section]` 命令。 当一个主服务器被 Sentinel 标记为客观下线时， Sentinel 向下线主服务器的所有从服务器发送 `INFO [section]` 命令的频率会从 10 秒一次改为每秒一次。
 
