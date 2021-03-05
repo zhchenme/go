@@ -90,3 +90,4 @@ Sentinel 的个数最好设置成奇数个，避免在一个纪元内出现平�
 [Raft 协议实战之 Redis Sentinel 的选举 Leader 源码解析 ](https://cloud.tencent.com/developer/article/1021467) <br>
 [一文搞懂 Raft 算法 ](https://www.cnblogs.com/xybaby/p/10124083.html) <br>
 [Raft 算法理解神器 ](http://thesecretlivesofdata.com/raft/) <br>
+[Raft 一致性算法](https://lotabout.me/2019/Raft-Consensus-Algorithm/)
