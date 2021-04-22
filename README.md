@@ -41,6 +41,7 @@
     - [2019-06-19-MySQL 索引原理](mysql/2019-06-19-索引原理分析.md)
     - [2020-12-23-MySQL](mysql/2020-12-23-MySQL.md)
  - Redis
+    - [2018-01-02-Redis 事务](redis/2018-01-02-Redis事务.md)
     - [2019-07-01-Redis 数据类型之哈希表](redis/2019-07-01-Redis数据结构之哈希表.md)
     - [2019-07-01-Redis 数据持久化之 RDB](redis/2019-07-01-RedisRDB持久化.md)
     - [2020-05-29-Redis 数据持久化之 AOF](redis/2020-05-29-RedisAOF持久化.md)
